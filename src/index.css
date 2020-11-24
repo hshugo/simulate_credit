@@ -1,13 +1,132 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("Montserrat-Medium.ttf");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: Montserrat, source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App {
+  display : flex;
+}
+
+.box_main {
+  margin: auto;
+  display : flex;
+  color: red;
+  width: 90%;
+  padding: 4rem;
+  background-color: #282e9b;
+  max-width: 35rem;
+}
+
+.box_credit {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  color: white;
+  font-size: 12px;
+  background-color: #162e6e;
+  padding: 0 2rem 4rem 2rem;
+
+
+}
+
+h1 {
+  font-weight:bold;
+  padding: 1rem;
+}
+
+.calculate_slider {
+  padding: 0 1rem;
+}
+
+.choice_money, .choice_term {
+  display: flex;
+  flex-direction: row;
+  text-transform:uppercase;
+  justify-content: space-between;
+  padding: 1rem 0;
+  font-size: 1rem;
+}
+
+.input {
+  border:1px solid white;
+  width:1.5rem;
+}
+
+.input_background {
+  background-color: #152b69;
+  border: 1px solid white;
+  color: white;
+  font-size: 1.5rem;
+  width: 8rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.box_cost {
+  text-transform:uppercase;
+  margin: 1rem 0 0 0;
+}
+
+.mensual_cost {
+  height: 3.5rem;
+  display: flex;
+}
+
+.title_cost {
+  font-size: 1rem;
+  padding:1rem;
+  font-weight: bold;
+  width:15rem;
+}
+
+.value_cost {
+  text-align:center;
+  font-size: 2rem;
+  padding:0.5rem;
+  margin: auto;
+  font-weight: bold;
+}
+
+.buttons_cost {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  height: 4rem;
+}
+
+.credit {
+  font-size: 1rem;
+  margin-right: 1rem;
+  background-color: #07b496;
+  width: 70%;
+}
+
+.details {
+  background-color: #3b4dd0
+}
+
+.rc-slider {
+  height:3rem !important;
+  width:85% !important;
+  margin: auto !important;
+}
+
+.rc-slider-mark-text {
+  font-size: 1.0rem;
+  color: white !important;
 }
