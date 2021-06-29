@@ -11,23 +11,24 @@ function App() {
   const max_term=24;
   const marksCost = {"5000":"$5.000","50000":"$50.000"};
   const marksTerm = {"3":3,"24":24};
+  const [valueCost, setValueCost] = useState("$2,412.91");
 
   const setInput = value => {
-    document.querySelector("#cost").value=value;
+    setCost(value);
     calculatePorcentage();
   }
 
   const setInputTerm = value => {
-    document.querySelector("#term").value=value;
+    setTerm(value);
     calculatePorcentage();
   }
 
   const calculatePorcentage = _ => {
     const rate = 197.98;
-    const total = document.querySelector("#cost").value * rate / 100;
-    const quota = total / document.querySelector("#term").value;
-    const formatted = "$" + new Intl.NumberFormat("en-IN").format(quota);
-    document.querySelector(".value_cost").innerHTML = formatted;
+    const total = cost * rate / 100;
+    const quota = total / term;
+    const formatted = "$" + new Intl.NumberFormat("en-AR").format(quota);
+    setValueCost(formatted);
   }
 
 
@@ -35,7 +36,7 @@ function App() {
     if(e.target.name==="cost") {
       if (e.target.value < min_cost || e.target.value > max_cost) {
         alert("¡Verifique el valor ingresado, no debe ser inferior a "+min_cost+" ni superior a "+max_cost+"!");
-        document.querySelector("#cost").value = min_cost;
+        setCost(min_cost);
       } else {
         setCost(e.target.value);
         calculatePorcentage();
@@ -43,7 +44,7 @@ function App() {
     }else {
       if (e.target.value < min_term || e.target.value > max_term) {
         alert("¡Verifique el valor ingresado, no debe ser inferior a "+min_term+" ni superior a "+max_term+"!");
-        document.querySelector("#term").value = min_term;;
+        setTerm(min_term);
       } else {
         setTerm(e.target.value);
         calculatePorcentage()
@@ -59,6 +60,14 @@ function App() {
     alert("Detalle de cuotas ....");
   }
 
+  const handleCost = (e) => {
+    setCost(e.target.value);
+  }
+
+  const handleTerm = (e) => {
+    setTerm(e.target.value);
+  }
+
   return (
     <>
     <div className="App">
@@ -72,12 +81,12 @@ function App() {
             <div className="calculate_slider">
               <div className="choice_money">
                 <div className="title">Monto Total</div>
-                <input type="text" id="cost" name="cost" defaultValue={min_cost} className="input_background" onBlur={_onBlur.bind(this)} />
+                <input type="text" value={cost} name="cost" defaultValue={min_cost} className="input_background" onChange={handleCost} onBlur={_onBlur} />
               </div>
               <SliderWrapper min={min_cost} max={max_cost} value={cost} handleSlider={setCost} setInput={setInput} marks={marksCost}/>
               <div className="choice_term">
                 <div className="title">Plazo</div>
-                <input type="text" id="term" name="term" defaultValue={min_term} className="input_background" onBlur={_onBlur.bind(this)} />
+                <input type="text" name="term" defaultValue={min_term} className="input_background" onChange={handleTerm} onBlur={_onBlur} />
               </div>
               <SliderWrapper min={min_term} max={max_term} value={term} handleSlider={setTerm} setInput={setInputTerm} marks={marksTerm}/>
             </div>
@@ -85,7 +94,7 @@ function App() {
             <div className="box_cost">
               <div className="mensual_cost">
                 <div className="title_cost">Cuota fija por mes</div>
-                <div className="value_cost"> $2,412.91</div>
+                <div className="value_cost"> {valueCost} </div>
               </div>
 
               <div className="buttons_cost">
